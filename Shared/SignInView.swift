@@ -10,6 +10,9 @@ import UIKit
 import GoogleSignIn
 import RxSwift
 import RxCocoa
+import Firebase
+import FirebaseFirestore
+import GoogleSignIn
 
 struct SignInView: UIViewControllerRepresentable {
     
@@ -37,6 +40,13 @@ class SignInViewController: UIViewController {
         return button
     }()
     
+    private let changeNicknameButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Change nickname to star8080", for: .normal)
+        return button
+    }()
+    
     private let currentUserInfoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10.0)
@@ -51,9 +61,13 @@ class SignInViewController: UIViewController {
         
         GIDSignIn.sharedInstance().presentingViewController = self
         
-        // Automatically sign in the user.
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        let user = Auth.auth().currentUser
+        //self.currentUserInfoLabel.text = user.debugDescription
         
+        db.collection("users").document(user?.uid ?? "").getDocument { snapshot, error in
+            self.currentUserInfoLabel.text = snapshot?.get("nickname") as? String
+        }
+       
         setupViews()
         bindViews()
     }
@@ -71,6 +85,7 @@ class SignInViewController: UIViewController {
         ])
         
         vStackView.addArrangedSubview(googleSiginInButton)
+        vStackView.addArrangedSubview(changeNicknameButton)
         vStackView.addArrangedSubview(currentUserInfoLabel)
     }
     
@@ -82,10 +97,27 @@ class SignInViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        changeNicknameButton.rx
+            .tap
+            .subscribe(onNext: { [weak self] in
+                self?.changeNickname()
+            })
+            .disposed(by: disposeBag)
+        
         NotificationCenter.default.rx.notification(.init(Login.EventName.signInProcessCompleted))
             .debug()
             .compactMap { $0.object.debugDescription }
             .bind(to: currentUserInfoLabel.rx.text)
             .disposed(by: disposeBag)
     }
+    
+    func changeNickname() {
+        let currentUser = Auth.auth().currentUser
+        guard let uid = currentUser?.uid else { return }
+        
+        db.collection("users").document(uid).updateData(["nickname": "star8080"]) { error in
+    
+        }
+    }
 }
+

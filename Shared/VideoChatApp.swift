@@ -62,20 +62,25 @@ extension AppDelegate {
             guard let authUser = authResult?.user else { assertionFailure("😡 firebase sign in failure"); return }
             
             let uid = authUser.uid
+            
+            // db 저장 하지말기.
+            let a = authUser.providerData
+            
             let user = User(
                 uid: uid,
                 fullName: user.profile.name,
-                nickname: "Common Nickname", // TOOD: 가입시, 입력 받기
+                nickname: "", // TOOD: 가입시, 입력 받기
                 email: authUser.email,
                 profileImageUrl: authUser.photoURL?.absoluteString,
-                services: [.google] // 일단 고정, 추후 변경
+                services: authUser.providerData.compactMap { $0.providerID }
             )
             
-            self.storeUser(user, forKey: uid)
+            Self.storeUser(user, forKey: uid)
         }
     }
     
-    private func storeUser(_ user: User, forKey: String) {
+    // TODO: 추후 이동
+    static func storeUser(_ user: User, forKey: String) {
         
         do {
             let data = try JSONEncoder().encode(user)
@@ -86,7 +91,7 @@ extension AppDelegate {
                 return
             }
             
-            db.collection("users").document(forKey).setData(user) { error in
+            db.collection("users").addDocument(data: user) { error in
                 NotificationCenter.default.post(.init(name: .init(Login.EventName.signInProcessCompleted),
                                                       object: user,
                                                       userInfo: nil))

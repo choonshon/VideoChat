@@ -16,7 +16,7 @@ struct User: Encodable {
     let nickname: String?
     let email: String?
     let profileImageUrl: String?
-    var services: [Login.Service]?
+    var services: [String]?
 }
 
 // service_name userId
