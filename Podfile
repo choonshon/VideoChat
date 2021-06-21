@@ -1,22 +1,26 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'VideoChat' do
+target 'VideoChat (iOS)' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for VideoChat
-  pod 'GoogleSignIn'
+  # Pods for VideoChat (iOS)
   pod 'Firebase/Auth'
- # pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  # pod 'FirebaseFirestoreSwift'
 
-  target 'VideoChatTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod 'GoogleSignIn'
+  
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
 
-  target 'VideoChatUITests' do
-    # Pods for testing
-  end
+end
+
+target 'VideoChat (macOS)' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for VideoChat (macOS)
 
 end
