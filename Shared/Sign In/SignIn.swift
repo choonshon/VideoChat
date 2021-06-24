@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Login {
+struct SignIn {
     
     enum Service: String, Encodable {
         case google

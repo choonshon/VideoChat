@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import GoogleSignIn
+import FBSDKCoreKit
 
 @main
 struct VideoChatApp: App {
@@ -29,16 +30,34 @@ class AppDelegate: NSObject, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        db = Firestore.firestore()
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
-        db = Firestore.firestore()
+        // Facebook
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         return true
     }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
     -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        
+        // Google
+        if GIDSignIn.sharedInstance().handle(url) {
+            return true
+        }
+        
+        // Facebook
+        return ApplicationDelegate.shared.application(
+            application,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -92,7 +111,7 @@ extension AppDelegate {
             }
             
             db.collection("users").addDocument(data: user) { error in
-                NotificationCenter.default.post(.init(name: .init(Login.EventName.signInProcessCompleted),
+                NotificationCenter.default.post(.init(name: .init(SignIn.EventName.signInProcessCompleted),
                                                       object: user,
                                                       userInfo: nil))
             }

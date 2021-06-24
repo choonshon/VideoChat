@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		08F6B2D1A01E5F5063340205 /* Pods_VideoChat__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F6EA299D91ACD93C4E33BE /* Pods_VideoChat__macOS_.framework */; };
 		5C95BAC806094088C483EC1B /* Pods_VideoChat__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037EF270EE61A04EEECA53B2 /* Pods_VideoChat__iOS_.framework */; };
-		9516ABD0267B9EFD00F5B99E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ABCF267B9EFD00F5B99E /* Login.swift */; };
-		9516ABD1267B9EFD00F5B99E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ABCF267B9EFD00F5B99E /* Login.swift */; };
+		9516ABD0267B9EFD00F5B99E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ABCF267B9EFD00F5B99E /* SignIn.swift */; };
+		9516ABD1267B9EFD00F5B99E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ABCF267B9EFD00F5B99E /* SignIn.swift */; };
 		956EB9A6267725A7004DD88D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EB9A5267725A7004DD88D /* Tests_iOS.swift */; };
 		956EB9B1267725A7004DD88D /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EB9B0267725A7004DD88D /* Tests_macOS.swift */; };
 		956EB9B3267725A7004DD88D /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EB98A267725A6004DD88D /* VideoChatApp.swift */; };
@@ -19,9 +19,13 @@
 		956EB9B6267725A7004DD88D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EB98B267725A6004DD88D /* ContentView.swift */; };
 		956EB9B7267725A7004DD88D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956EB98C267725A7004DD88D /* Assets.xcassets */; };
 		956EB9B8267725A7004DD88D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956EB98C267725A7004DD88D /* Assets.xcassets */; };
+		957211A52684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
+		957211A62684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
+		957211B02684661C00181919 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211AF2684661C00181919 /* VisualEffectView.swift */; };
+		957211B12684661C00181919 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211AF2684661C00181919 /* VisualEffectView.swift */; };
 		9598942926772A28004EF0E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9598942826772A25004EF0E8 /* GoogleService-Info.plist */; };
-		9598942B26772C94004EF0E8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInView.swift */; };
-		9598942C26772C94004EF0E8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInView.swift */; };
+		9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
+		9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
 		9598942E26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
 		9598942F26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +53,7 @@
 		0DD7996651D1DE5BA72FE151 /* Pods-VideoChat (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (macOS).debug.xcconfig"; path = "Target Support Files/Pods-VideoChat (macOS)/Pods-VideoChat (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		1AF8605D36EFE5912A5BE048 /* Pods-VideoChat (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (iOS).debug.xcconfig"; path = "Target Support Files/Pods-VideoChat (iOS)/Pods-VideoChat (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		34377A43F92B34D45D805898 /* Pods-VideoChat (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (macOS).release.xcconfig"; path = "Target Support Files/Pods-VideoChat (macOS)/Pods-VideoChat (macOS).release.xcconfig"; sourceTree = "<group>"; };
-		9516ABCF267B9EFD00F5B99E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9516ABCF267B9EFD00F5B99E /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		956EB98A267725A6004DD88D /* VideoChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatApp.swift; sourceTree = "<group>"; };
 		956EB98B267725A6004DD88D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		956EB98C267725A7004DD88D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,8 +68,10 @@
 		956EB9AC267725A7004DD88D /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		956EB9B0267725A7004DD88D /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		956EB9B2267725A7004DD88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957211A42684596500181919 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		957211AF2684661C00181919 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		9598942826772A25004EF0E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9598942A26772C94004EF0E8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		9598942A26772C94004EF0E8 /* SignInButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonListView.swift; sourceTree = "<group>"; };
 		9598942D26773DAF004EF0E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BC82EBFA9AD14E83B403A0AF /* Pods-VideoChat (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (iOS).release.xcconfig"; path = "Target Support Files/Pods-VideoChat (iOS)/Pods-VideoChat (iOS).release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,9 +138,9 @@
 			children = (
 				956EB98A267725A6004DD88D /* VideoChatApp.swift */,
 				956EB98B267725A6004DD88D /* ContentView.swift */,
-				9598942A26772C94004EF0E8 /* SignInView.swift */,
 				9598942D26773DAF004EF0E8 /* User.swift */,
-				9516ABCF267B9EFD00F5B99E /* Login.swift */,
+				957211AE2684661C00181919 /* Common */,
+				957211B226848E4A00181919 /* Sign In */,
 				956EB98C267725A7004DD88D /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -185,6 +191,24 @@
 				956EB9B2267725A7004DD88D /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		957211AE2684661C00181919 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				957211AF2684661C00181919 /* VisualEffectView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		957211B226848E4A00181919 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				9516ABCF267B9EFD00F5B99E /* SignIn.swift */,
+				9598942A26772C94004EF0E8 /* SignInButtonListView.swift */,
+				957211A42684596500181919 /* SignInView.swift */,
+			);
+			path = "Sign In";
 			sourceTree = "<group>";
 		};
 		F634179748F8378185033116 /* Pods */ = {
@@ -442,9 +466,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9598942E26773DAF004EF0E8 /* User.swift in Sources */,
+				957211A52684596500181919 /* SignInView.swift in Sources */,
+				957211B02684661C00181919 /* VisualEffectView.swift in Sources */,
 				956EB9B5267725A7004DD88D /* ContentView.swift in Sources */,
-				9516ABD0267B9EFD00F5B99E /* Login.swift in Sources */,
-				9598942B26772C94004EF0E8 /* SignInView.swift in Sources */,
+				9516ABD0267B9EFD00F5B99E /* SignIn.swift in Sources */,
+				9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
 				956EB9B3267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,9 +480,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9598942F26773DAF004EF0E8 /* User.swift in Sources */,
+				957211A62684596500181919 /* SignInView.swift in Sources */,
+				957211B12684661C00181919 /* VisualEffectView.swift in Sources */,
 				956EB9B6267725A7004DD88D /* ContentView.swift in Sources */,
-				9516ABD1267B9EFD00F5B99E /* Login.swift in Sources */,
-				9598942C26772C94004EF0E8 /* SignInView.swift in Sources */,
+				9516ABD1267B9EFD00F5B99E /* SignIn.swift in Sources */,
+				9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
 				956EB9B4267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,12 +8,14 @@ target 'VideoChat (iOS)' do
   # Pods for VideoChat (iOS)
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  # pod 'FirebaseFirestoreSwift'
 
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
   
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  
+  pod 'URLImage'
 
 end
 
