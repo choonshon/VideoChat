@@ -7,13 +7,18 @@
 
 import Foundation
 
+extension Notification.Name {
+    static let signInProcessCompleted: String = "SignInProcessCompleted"
+    static let signOutProcessCompleted: String = "SignOutProcessCompleted"
+}
+
 struct SignIn {
-    
     enum Service: String, Encodable {
         case google
     }
-    
-    enum EventName {
-        static let signInProcessCompleted: String = "SignInProcessCompleted"
-    }
+}
+
+protocol LoginService {
+    func signIn()
+    func signOut()
 }

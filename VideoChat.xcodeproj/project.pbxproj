@@ -19,10 +19,12 @@
 		956EB9B6267725A7004DD88D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EB98B267725A6004DD88D /* ContentView.swift */; };
 		956EB9B7267725A7004DD88D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956EB98C267725A7004DD88D /* Assets.xcassets */; };
 		956EB9B8267725A7004DD88D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956EB98C267725A7004DD88D /* Assets.xcassets */; };
+		95710F7A2689D0D100D791E8 /* SignIn+Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F792689D0D100D791E8 /* SignIn+Google.swift */; };
+		95710F7B2689D0D100D791E8 /* SignIn+Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F792689D0D100D791E8 /* SignIn+Google.swift */; };
+		95710F7D2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */; };
+		95710F7E2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */; };
 		957211A52684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
 		957211A62684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
-		957211B02684661C00181919 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211AF2684661C00181919 /* VisualEffectView.swift */; };
-		957211B12684661C00181919 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211AF2684661C00181919 /* VisualEffectView.swift */; };
 		9598942926772A28004EF0E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9598942826772A25004EF0E8 /* GoogleService-Info.plist */; };
 		9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
 		9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
@@ -68,8 +70,9 @@
 		956EB9AC267725A7004DD88D /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		956EB9B0267725A7004DD88D /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		956EB9B2267725A7004DD88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95710F792689D0D100D791E8 /* SignIn+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignIn+Google.swift"; sourceTree = "<group>"; };
+		95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignIn+Facebook.swift"; sourceTree = "<group>"; };
 		957211A42684596500181919 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		957211AF2684661C00181919 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		9598942826772A25004EF0E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9598942A26772C94004EF0E8 /* SignInButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonListView.swift; sourceTree = "<group>"; };
 		9598942D26773DAF004EF0E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 				956EB98A267725A6004DD88D /* VideoChatApp.swift */,
 				956EB98B267725A6004DD88D /* ContentView.swift */,
 				9598942D26773DAF004EF0E8 /* User.swift */,
-				957211AE2684661C00181919 /* Common */,
 				957211B226848E4A00181919 /* Sign In */,
 				956EB98C267725A7004DD88D /* Assets.xcassets */,
 			);
@@ -193,18 +195,12 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		957211AE2684661C00181919 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				957211AF2684661C00181919 /* VisualEffectView.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		957211B226848E4A00181919 /* Sign In */ = {
 			isa = PBXGroup;
 			children = (
 				9516ABCF267B9EFD00F5B99E /* SignIn.swift */,
+				95710F792689D0D100D791E8 /* SignIn+Google.swift */,
+				95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */,
 				9598942A26772C94004EF0E8 /* SignInButtonListView.swift */,
 				957211A42684596500181919 /* SignInView.swift */,
 			);
@@ -467,10 +463,11 @@
 			files = (
 				9598942E26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A52684596500181919 /* SignInView.swift in Sources */,
-				957211B02684661C00181919 /* VisualEffectView.swift in Sources */,
 				956EB9B5267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD0267B9EFD00F5B99E /* SignIn.swift in Sources */,
+				95710F7D2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,
 				9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
+				95710F7A2689D0D100D791E8 /* SignIn+Google.swift in Sources */,
 				956EB9B3267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,10 +478,11 @@
 			files = (
 				9598942F26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A62684596500181919 /* SignInView.swift in Sources */,
-				957211B12684661C00181919 /* VisualEffectView.swift in Sources */,
 				956EB9B6267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD1267B9EFD00F5B99E /* SignIn.swift in Sources */,
+				95710F7E2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,
 				9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
+				95710F7B2689D0D100D791E8 /* SignIn+Google.swift in Sources */,
 				956EB9B4267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

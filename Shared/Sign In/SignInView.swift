@@ -9,30 +9,35 @@ import SwiftUI
 import URLImage
 
 struct SignInView: View {
-    let bgImageURL = URL(string: "https://picsum.photos/500")!
-    
+
     var body: some View {
-        ZStack {
-            URLImage(url: bgImageURL) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+        VStack {
+            Image("welcomeCharacter")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 50)
+                .frame(width: 200)
+            
+            Spacer()
+            
+            VStack(spacing: 30) {
+                
+                Button(action: {
+                    googleLogin.signIn()
+                }) {
+                    Text("Sign in With Google")
+                }
+                
+                Button(action: {
+                    
+                }) {
+                    Text("Sign in With Facebook")
+                }
             }
             
-            VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterialDark))
-            
-            VStack {
-                Spacer()
-                
-                SignInButtonListView()
-                    .frame(width: 300, height: 70)
-                
-                Spacer()
-                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-            }
+            Spacer()
+                .frame(height: 140)
         }
-        .edgesIgnoringSafeArea(.all)
-        .colorScheme(.dark)
     }
 }
 
