@@ -12,6 +12,8 @@ import Firebase
 let facebookSignInService = FacebookLoginService()
 
 struct FacebookLoginService: SignInService {
+    var serviceType: SignInServiceType { .facebook }
+    
     func signIn() {
         LoginManager().logIn(permissions: ["public_profile", "email"],
                              from: UIApplication.shared.windows.first?.rootViewController) { loginResult, error in

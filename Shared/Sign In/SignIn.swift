@@ -13,20 +13,31 @@ extension Notification.Name {
     static let signOutProcessCompleted: Self = .init(rawValue: "SignOutProcessCompleted")
 }
 
-struct SignIn {
-    enum Service: String, Encodable {
-        case google
-    }
+enum SignInServiceType: String, Encodable {
+    case google, facebook
 }
 
 protocol SignInService {
     func signIn()
     func signOut()
+    
+    var serviceType: SignInServiceType { get }
 }
 
 extension SignInService {
     
     func signInFirebaseThenAddToDB(with credential: AuthCredential) {
+        
+        if let currentUser =  Auth.auth().currentUser {
+            let linkToCurrrentAccount = currentUser.providerData.compactMap { $0.providerID }.contains(self.serviceType.rawValue)
+            if linkToCurrrentAccount {
+                currentUser.link(with: credential) { authResult, error in
+                    print(authResult?.user)
+                }
+                return
+            }
+        }
+        
         Auth.auth().signIn(with: credential) { (authResult, error) in
             guard let authUser = authResult?.user else { assertionFailure("😡 firebase sign in failure"); return }
             
@@ -55,7 +66,7 @@ extension SignInService {
                 return
             }
             
-            db.collection("users").addDocument(data: data) { error in
+            db.collection("users").document(forKey).setData(data) { _ in
                 NotificationCenter.default.post(.init(name: .signInProcessCompleted,
                                                       object: user,
                                                       userInfo: nil))

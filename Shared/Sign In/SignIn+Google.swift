@@ -12,6 +12,8 @@ import Firebase
 let googleSignInService = GoogleSignInService()
 
 class GoogleSignInService: NSObject, SignInService {
+   
+    var serviceType: SignInServiceType { .google }
     
     override init() {
         super.init()
