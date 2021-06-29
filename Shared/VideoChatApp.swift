@@ -16,10 +16,15 @@ import FBSDKCoreKit
 struct VideoChatApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var userFoo = UserFoo()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userFoo)
+                .onAppear(perform: {
+                    userFoo.fetchCurrentUser()
+                })
         }
     }
 }

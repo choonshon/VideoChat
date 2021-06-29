@@ -23,11 +23,11 @@
 		95710F7B2689D0D100D791E8 /* SignIn+Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F792689D0D100D791E8 /* SignIn+Google.swift */; };
 		95710F7D2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */; };
 		95710F7E2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */; };
+		95710F80268AB81500D791E8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7F268AB81500D791E8 /* UserView.swift */; };
+		95710F81268AB81500D791E8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F7F268AB81500D791E8 /* UserView.swift */; };
 		957211A52684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
 		957211A62684596500181919 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957211A42684596500181919 /* SignInView.swift */; };
 		9598942926772A28004EF0E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9598942826772A25004EF0E8 /* GoogleService-Info.plist */; };
-		9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
-		9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942A26772C94004EF0E8 /* SignInButtonListView.swift */; };
 		9598942E26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
 		9598942F26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -72,9 +72,9 @@
 		956EB9B2267725A7004DD88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95710F792689D0D100D791E8 /* SignIn+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignIn+Google.swift"; sourceTree = "<group>"; };
 		95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignIn+Facebook.swift"; sourceTree = "<group>"; };
+		95710F7F268AB81500D791E8 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		957211A42684596500181919 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		9598942826772A25004EF0E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9598942A26772C94004EF0E8 /* SignInButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonListView.swift; sourceTree = "<group>"; };
 		9598942D26773DAF004EF0E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BC82EBFA9AD14E83B403A0AF /* Pods-VideoChat (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (iOS).release.xcconfig"; path = "Target Support Files/Pods-VideoChat (iOS)/Pods-VideoChat (iOS).release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +141,8 @@
 			children = (
 				956EB98A267725A6004DD88D /* VideoChatApp.swift */,
 				956EB98B267725A6004DD88D /* ContentView.swift */,
-				9598942D26773DAF004EF0E8 /* User.swift */,
+				957211A42684596500181919 /* SignInView.swift */,
+				95710F7F268AB81500D791E8 /* UserView.swift */,
 				957211B226848E4A00181919 /* Sign In */,
 				956EB98C267725A7004DD88D /* Assets.xcassets */,
 			);
@@ -198,11 +199,10 @@
 		957211B226848E4A00181919 /* Sign In */ = {
 			isa = PBXGroup;
 			children = (
+				9598942D26773DAF004EF0E8 /* User.swift */,
 				9516ABCF267B9EFD00F5B99E /* SignIn.swift */,
 				95710F792689D0D100D791E8 /* SignIn+Google.swift */,
 				95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */,
-				9598942A26772C94004EF0E8 /* SignInButtonListView.swift */,
-				957211A42684596500181919 /* SignInView.swift */,
 			);
 			path = "Sign In";
 			sourceTree = "<group>";
@@ -461,12 +461,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95710F80268AB81500D791E8 /* UserView.swift in Sources */,
 				9598942E26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A52684596500181919 /* SignInView.swift in Sources */,
 				956EB9B5267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD0267B9EFD00F5B99E /* SignIn.swift in Sources */,
 				95710F7D2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,
-				9598942B26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
 				95710F7A2689D0D100D791E8 /* SignIn+Google.swift in Sources */,
 				956EB9B3267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
@@ -476,12 +476,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95710F81268AB81500D791E8 /* UserView.swift in Sources */,
 				9598942F26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A62684596500181919 /* SignInView.swift in Sources */,
 				956EB9B6267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD1267B9EFD00F5B99E /* SignIn.swift in Sources */,
 				95710F7E2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,
-				9598942C26772C94004EF0E8 /* SignInButtonListView.swift in Sources */,
 				95710F7B2689D0D100D791E8 /* SignIn+Google.swift in Sources */,
 				956EB9B4267725A7004DD88D /* VideoChatApp.swift in Sources */,
 			);
