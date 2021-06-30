@@ -1,70 +1,91 @@
 //
-//  SignInView2.swift
+//  SignIn.swift
 //  VideoChat
 //
-//  Created by Choon Shon on 2021/06/24.
+//  Created by Choon Shon on 2021/06/14.
 //
 
 import SwiftUI
-import URLImage
+import UIKit
+import GoogleSignIn
+import RxSwift
+import RxCocoa
 
-struct SignInView: View {
-
-    var body: some View {
-        VStack {
-            Image("welcomeCharacter")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.top, 20)
-                .frame(width: 200)
-            
-            Text("Welcome to\nBetter Me!")
-                .fontWeight(.black)
-                .foregroundColor(Color(.systemIndigo))
-                .font(.largeTitle)
-                .multilineTextAlignment(.center)
-            
-            Text("Become the best version of yourself by tracking your every move.")
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-                .padding()
-
-            
-            VStack(spacing: 10) {
-                // Google Button
-                Button(action: {
-                    SignIn.shared.getService(.google).signIn()
-                }) {
-                    Text("Sign in With Google")
-                }
-                .buttonStyle(AuthenticationButtonStyle())
-                
-                // Facebook Button
-                Button(action: {
-                    SignIn.shared.getService(.facebook).signIn()
-                }) {
-                    Text("Sign in With Facebook")
-                }
-                .buttonStyle(AuthenticationButtonStyle())
-            }
-            .padding()
-        }
+struct SignInView: UIViewControllerRepresentable {
+    
+    func makeUIViewController(context: Context) -> SignInViewController {
+        return SignInViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: SignInViewController, context: Context) {
+        
     }
 }
 
-struct SignInView_Previews: PreviewProvider {
+struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
     }
 }
 
-struct AuthenticationButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(configuration.isPressed ? Color(.systemIndigo).opacity(0.7) : Color(.systemIndigo))
-            .cornerRadius(12)
+class SignInViewController: UIViewController {
+    
+    private let googleSiginInButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Join with Google", for: .normal)
+        return button
+    }()
+    
+    private let currentUserInfoLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 10.0)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let disposeBag = DisposeBag()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().presentingViewController = self
+        
+        // Automatically sign in the user.
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        setupViews()
+        bindViews()
+    }
+    
+    private func setupViews() {
+        let vStackView = UIStackView()
+        vStackView.axis = .vertical
+        
+        view.addSubview(vStackView)
+        vStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
+            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
+            vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        vStackView.addArrangedSubview(googleSiginInButton)
+        vStackView.addArrangedSubview(currentUserInfoLabel)
+    }
+    
+    private func bindViews() {
+        googleSiginInButton.rx
+            .tap
+            .subscribe(onNext: {
+                GIDSignIn.sharedInstance().signIn()
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.init(Login.EventName.signInProcessCompleted))
+            .debug()
+            .compactMap { $0.object.debugDescription }
+            .bind(to: currentUserInfoLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }
