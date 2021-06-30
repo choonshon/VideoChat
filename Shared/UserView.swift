@@ -10,8 +10,7 @@ import URLImage
 
 struct UserView: View {
   // 2
-  var user: User?
-    
+  @State var user: User?
   @State var showAlert = false
 
   var body: some View {
@@ -23,7 +22,7 @@ struct UserView: View {
                     URLImage(url: profileImageURL) { image in
                         image
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100, alignment: .center)
+                            .frame(width: 70, height: 70, alignment: .center)
                             .cornerRadius(8)
                     }
                 }
@@ -43,7 +42,17 @@ struct UserView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(12)
             .padding()
-
+            
+            HStack(spacing: 20) {
+                Button("Link Facebook") {
+                    FacebookLoginService().link()
+                }
+                
+                Button("Unlink Facebook") {
+                    FacebookLoginService().unlink()
+                }
+            }
+            
             Spacer()
 
             // 4
@@ -55,7 +64,7 @@ struct UserView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Sign Out"),
                       message: Text("Are you Sure??"),
-                      primaryButton: .default(Text("Sign Out"), action: { facebookSignInService.signOut() }),
+                      primaryButton: .default(Text("Sign Out"), action: { SignIn.shared.signOut() }),
                       secondaryButton: .cancel(Text("Cancel"), action: { showAlert = false })
                 )
             }

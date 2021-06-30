@@ -9,11 +9,9 @@ import GoogleSignIn
 import Firebase
 
 // Google
-let googleSignInService = GoogleSignInService()
-
 class GoogleSignInService: NSObject, SignInService {
    
-    var serviceType: SignInServiceType { .google }
+    var serviceType: SignIn.ServiceType { .google }
     
     override init() {
         super.init()
@@ -22,10 +20,16 @@ class GoogleSignInService: NSObject, SignInService {
     }
     
     func signIn() {
-        if GIDSignIn.sharedInstance().currentUser == nil {
-            GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
-            GIDSignIn.sharedInstance().signIn()
-        }
+        GIDSignIn.sharedInstance().presentingViewController = UIApplication.shared.windows.first?.rootViewController
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func link() {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func unlink() {
+        
     }
     
     func signOut() {

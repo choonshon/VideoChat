@@ -16,15 +16,10 @@ import FBSDKCoreKit
 struct VideoChatApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject var userFoo = UserFoo()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(userFoo)
-                .onAppear(perform: {
-                    userFoo.fetchCurrentUser()
-                })
         }
     }
 }
@@ -38,6 +33,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         db = Firestore.firestore()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        SignIn.shared.update()
         
         // Facebook
         ApplicationDelegate.shared.application(

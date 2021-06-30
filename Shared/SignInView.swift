@@ -33,7 +33,7 @@ struct SignInView: View {
             VStack(spacing: 10) {
                 // Google Button
                 Button(action: {
-                    googleSignInService.signIn()
+                    SignIn.shared.getService(.google).signIn()
                 }) {
                     Text("Sign in With Google")
                 }
@@ -41,7 +41,7 @@ struct SignInView: View {
                 
                 // Facebook Button
                 Button(action: {
-                    facebookSignInService.signIn()
+                    SignIn.shared.getService(.facebook).signIn()
                 }) {
                     Text("Sign in With Facebook")
                 }
@@ -57,7 +57,6 @@ struct SignInView_Previews: PreviewProvider {
         SignInView()
     }
 }
-
 
 struct AuthenticationButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {

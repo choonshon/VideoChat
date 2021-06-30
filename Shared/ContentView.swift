@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State var user: User?
     
+    init() {
+        
+    }
+    
     var body: some View {
         VStack {
             if let user = user {

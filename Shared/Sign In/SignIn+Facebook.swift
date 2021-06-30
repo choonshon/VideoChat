@@ -9,10 +9,9 @@ import Foundation
 import FBSDKLoginKit
 import Firebase
 
-let facebookSignInService = FacebookLoginService()
-
 struct FacebookLoginService: SignInService {
-    var serviceType: SignInServiceType { .facebook }
+    
+    var serviceType: SignIn.ServiceType { .facebook }
     
     func signIn() {
         LoginManager().logIn(permissions: ["public_profile", "email"],
@@ -22,6 +21,22 @@ struct FacebookLoginService: SignInService {
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
             signInFirebaseThenAddToDB(with: credential)
         }
+    }
+    
+    func link() {
+        LoginManager().logIn(permissions: ["public_profile", "email"],
+                             from: UIApplication.shared.windows.first?.rootViewController) { loginResult, error in
+            
+            guard let accessToken = AccessToken.current?.tokenString else { return }
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+            link(credential: credential)
+        }
+    }
+    
+
+    func unlink() {
+        LoginManager().logOut()
+        unlink(providerId: SignIn.ServiceType.facebook.rawValue)
     }
     
     func signOut() {
