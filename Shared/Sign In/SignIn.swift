@@ -37,31 +37,36 @@ class SignIn {
     func update() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
                 
-        db.collection("users").document(uid).getDocument { snapshot, _ in
-            if let snapshot = snapshot, snapshot.exists {
+        db.child("users/\(uid)").getData { _, snapshot in
+            if snapshot.exists() {
+                
+                
+                guard let value = snapshot.value as? [String: Any] else { assertionFailure(); return }
                 
                 let user = User(uid: uid,
-                                userId: snapshot.get("userId") as? String ?? "",
-                                fullName: snapshot.get("fullName") as? String ?? "",
-                                email: snapshot.get("email") as? String,
-                                profileImageUrl: snapshot.get("profileImageUrl") as? String,
-                                services: (snapshot.get("services") as? [String])?.compactMap { SignIn.ServiceType(rawValue: $0) }
-                )
+                                userId: value["userId"] as? String ?? "",
+                                fullName: value["fullName"] as? String ?? "",
+                                email: value["email"] as? String,
+                                profileImageUrl: value["profileImageUrl"] as? String,
+                                services: (value["services"] as? [String])?.compactMap { SignIn.ServiceType(rawValue: $0) } ?? []
+                                )
                 
                 self.currentUser = user
                 
-                NotificationCenter.default.post(.init(name: .signInProcessCompleted,
-                                                      object: user,
-                                                      userInfo: nil))
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(.init(name: .signInProcessCompleted,
+                                                          object: user,
+                                                          userInfo: nil))
+                }
                 return
             }
         }
     }
     
     func signOut() {
-        if let service = currentService {
-            getService(service).signOut()
-        }
+        // TODO: 문의..
+        getService(.google).signOut()
+        getService(.facebook).signOut()
     }
     
     func linkToService(_ service: ServiceType) {
@@ -81,7 +86,6 @@ protocol SignInService {
 extension SignInService {
     
     func signInFirebaseThenAddToDB(with credential: AuthCredential) {
-        guard Auth.auth().currentUser == nil else { return }
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
             guard let authUser = authResult?.user else { assertionFailure("😡 firebase sign in failure"); return }
@@ -89,22 +93,26 @@ extension SignInService {
             let key = authUser.uid
             
             // 유저 DB 저장 유무 확인
-            db.collection("users").document(key).getDocument { snapshot, _ in
-                if let snapshot = snapshot, snapshot.exists {
+            db.child("users/\(key)").getData { _, snapshot in
+                if snapshot.exists() {
+                    
+                    guard let value = snapshot.value as? [String: Any] else { assertionFailure(); return }
                     
                     let user = User(uid: authUser.uid,
-                                    userId: snapshot.get("userId") as? String ?? "",
-                                    fullName: snapshot.get("fullName") as? String ?? "",
-                                    email: snapshot.get("email") as? String,
-                                    profileImageUrl: snapshot.get("profileImageUrl") as? String,
-                                    services: (snapshot.get("services") as? [String])?.compactMap { SignIn.ServiceType(rawValue: $0) }
-                                )
+                                    userId: value["userId"] as? String ?? "",
+                                    fullName: value["fullName"] as? String ?? "",
+                                    email: value["email"] as? String,
+                                    profileImageUrl: value["profileImageUrl"] as? String,
+                                    services: (value["services"] as? [String])?.compactMap { SignIn.ServiceType(rawValue: $0) } ?? []
+                                    )
                     
                     SignIn.shared.currentUser = user
                     
-                    NotificationCenter.default.post(.init(name: .signInProcessCompleted,
-                                                          object: user,
-                                                          userInfo: nil))
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(.init(name: .signInProcessCompleted,
+                                                              object: user,
+                                                              userInfo: nil))
+                    }
                     return
                 }
                 
@@ -128,18 +136,22 @@ extension SignInService {
             let data = try JSONEncoder().encode(user)
             let dict = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any]
             
-            guard let data = dict else {
+            guard let valuesForKeys = dict else {
                 assertionFailure() // TODO: 예외 처리
                 return
             }
             
-            db.collection("users").document(forKey).setData(data) { _ in
+            db.child("users/\(forKey)").setValue(valuesForKeys) { error, _ in
                 
-                SignIn.shared.currentUser = user
-
-                NotificationCenter.default.post(.init(name: .signInProcessCompleted,
-                                                      object: user,
-                                                      userInfo: nil))
+                if error == nil {
+                    SignIn.shared.currentUser = user
+                    
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(.init(name: .signInProcessCompleted,
+                                                              object: user,
+                                                              userInfo: nil))
+                    }
+                }
             }
         } catch {
             print("😡 user data serialization error:", error)

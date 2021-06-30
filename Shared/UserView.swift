@@ -33,6 +33,11 @@ struct UserView: View {
 
                 Text(user?.email ?? "")
                   .font(.subheadline)
+                
+                if let sevices = user?.services.map{ $0.rawValue } {
+                    Text(sevices.reduce("") { $0 + $1 + " " })
+                        .font(.subheadline)
+                }
               }
 
               Spacer()

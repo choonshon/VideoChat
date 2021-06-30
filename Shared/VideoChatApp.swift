@@ -8,9 +8,9 @@
 import SwiftUI
 import UIKit
 import Firebase
-import FirebaseFirestore
 import GoogleSignIn
 import FBSDKCoreKit
+import FirebaseDatabase
 
 @main
 struct VideoChatApp: App {
@@ -24,13 +24,14 @@ struct VideoChatApp: App {
     }
 }
 
-var db: Firestore! // TODO: 추후 이동
+var db: DatabaseReference! // TODO: 추후 이동
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        db = Firestore.firestore()
+        db = Database.database(url: "https://videochat-1622690518853-default-rtdb.asia-southeast1.firebasedatabase.app").reference()
+
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         SignIn.shared.update()
