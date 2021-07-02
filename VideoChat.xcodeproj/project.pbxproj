@@ -30,6 +30,8 @@
 		9598942926772A28004EF0E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9598942826772A25004EF0E8 /* GoogleService-Info.plist */; };
 		9598942E26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
 		9598942F26773DAF004EF0E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598942D26773DAF004EF0E8 /* User.swift */; };
+		959E2090268D94CA00CF77D0 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959E208F268D94CA00CF77D0 /* Follow.swift */; };
+		959E2091268D94CA00CF77D0 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959E208F268D94CA00CF77D0 /* Follow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		957211A42684596500181919 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		9598942826772A25004EF0E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9598942D26773DAF004EF0E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		959E208F268D94CA00CF77D0 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		BC82EBFA9AD14E83B403A0AF /* Pods-VideoChat (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat (iOS).release.xcconfig"; path = "Target Support Files/Pods-VideoChat (iOS)/Pods-VideoChat (iOS).release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +206,7 @@
 				9516ABCF267B9EFD00F5B99E /* SignIn.swift */,
 				95710F792689D0D100D791E8 /* SignIn+Google.swift */,
 				95710F7C2689D0F600D791E8 /* SignIn+Facebook.swift */,
+				959E208F268D94CA00CF77D0 /* Follow.swift */,
 			);
 			path = "Sign In";
 			sourceTree = "<group>";
@@ -464,6 +468,7 @@
 				95710F80268AB81500D791E8 /* UserView.swift in Sources */,
 				9598942E26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A52684596500181919 /* SignInView.swift in Sources */,
+				959E2090268D94CA00CF77D0 /* Follow.swift in Sources */,
 				956EB9B5267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD0267B9EFD00F5B99E /* SignIn.swift in Sources */,
 				95710F7D2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,
@@ -479,6 +484,7 @@
 				95710F81268AB81500D791E8 /* UserView.swift in Sources */,
 				9598942F26773DAF004EF0E8 /* User.swift in Sources */,
 				957211A62684596500181919 /* SignInView.swift in Sources */,
+				959E2091268D94CA00CF77D0 /* Follow.swift in Sources */,
 				956EB9B6267725A7004DD88D /* ContentView.swift in Sources */,
 				9516ABD1267B9EFD00F5B99E /* SignIn.swift in Sources */,
 				95710F7E2689D0F600D791E8 /* SignIn+Facebook.swift in Sources */,

@@ -5,7 +5,6 @@
 //  Created by Choon Shon on 2021/06/18.
 //
 
-import Foundation
 import Firebase
 import SwiftUI
 
@@ -40,7 +39,6 @@ class SignIn {
         db.child("users/\(uid)").getData { _, snapshot in
             if snapshot.exists() {
                 
-                
                 guard let value = snapshot.value as? [String: Any] else { assertionFailure(); return }
                 
                 let user = User(uid: uid,
@@ -64,7 +62,7 @@ class SignIn {
     }
     
     func signOut() {
-        // TODO: 문의..
+        // TODO: 문의. Auth Service
         getService(.google).signOut()
         getService(.facebook).signOut()
     }
@@ -191,6 +189,7 @@ extension SignInService {
     func unlink(providerId: String) {
         if let currentUser = Auth.auth().currentUser {
             currentUser.unlink(fromProvider: providerId) { authUser, error in
+
                 guard let authUser = authUser else { return }
                
                 let user = User(

@@ -57,6 +57,17 @@ struct UserView: View {
                     FacebookLoginService().unlink()
                 }
             }
+            .padding(.bottom)
+            
+            HStack(spacing: 20) {
+                Button("Follow 손춘") {
+                    FollowService.follow("SyQ7p6IQeLVgMaxKYd68jHUafRC3")
+                }
+                
+                Button("Unfollow 손춘") {
+                    FollowService.unfollow("SyQ7p6IQeLVgMaxKYd68jHUafRC3")
+                }
+            }
             
             Spacer()
 

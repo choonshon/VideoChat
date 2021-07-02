@@ -33,7 +33,6 @@ class GoogleSignInService: NSObject, SignInService {
     }
     
     func signOut() {
-        GIDSignIn.sharedInstance().signOut()
         signoutFromFirebase()
     }
 }

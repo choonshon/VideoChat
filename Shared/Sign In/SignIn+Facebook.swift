@@ -35,12 +35,10 @@ struct FacebookLoginService: SignInService {
     
 
     func unlink() {
-        LoginManager().logOut()
         unlink(providerId: SignIn.ServiceType.facebook.rawValue)
     }
     
     func signOut() {
-        LoginManager().logOut()
         signoutFromFirebase()
     }
 }
