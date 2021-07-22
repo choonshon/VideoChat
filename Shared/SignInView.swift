@@ -57,14 +57,3 @@ struct SignInView_Previews: PreviewProvider {
         SignInView()
     }
 }
-
-struct AuthenticationButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(configuration.isPressed ? Color(.systemIndigo).opacity(0.7) : Color(.systemIndigo))
-            .cornerRadius(12)
-    }
-}

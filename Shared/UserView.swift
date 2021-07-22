@@ -60,15 +60,15 @@ struct UserView: View {
             .padding(.bottom)
             
             HStack(spacing: 20) {
-                Button("Follow 손춘") {
-                    FollowService.follow("SyQ7p6IQeLVgMaxKYd68jHUafRC3")
+                NavigationLink(destination: FollowerView()) {
+                   Text("95만 Followers")
                 }
                 
-                Button("Unfollow 손춘") {
-                    FollowService.unfollow("SyQ7p6IQeLVgMaxKYd68jHUafRC3")
+                NavigationLink(destination: FollowerView()) {
+                   Text("12만 Followings ")
                 }
-            }
-            
+            }.padding(.bottom)
+  
             Spacer()
 
             // 4
